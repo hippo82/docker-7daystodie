@@ -11,9 +11,7 @@ ENV STEAMCMD_APP_ID="294420" \
 
 ADD 7dtd-* /usr/local/bin/
 RUN chmod +x /usr/local/bin/7dtd-*
-RUN chown -R 1001:1001 /data
-
-LABEL maintainer cliffrowley@gmail.com
+RUN chown -R 995:995 /data
 
 HEALTHCHECK CMD [ "7dtd-status" ]
 

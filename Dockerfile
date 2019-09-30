@@ -11,9 +11,13 @@ ENV STEAMCMD_APP_ID="294420" \
 
 ADD 7dtd-* /usr/local/bin/
 RUN chmod +x /usr/local/bin/7dtd-*
+RUN chown -R 1001:1001 /data
 
 LABEL maintainer cliffrowley@gmail.com
 
 HEALTHCHECK CMD [ "7dtd-status" ]
+
+EXPOSE 26900/tcp 26900/udp 26901/udp 26902/udp 8080/tcp 8081/tcp
+VOLUME /data
 
 CMD ["steamcmd-wrapper", "7dtd-server"]

@@ -1,5 +1,10 @@
 FROM zobees/steamcmd
 
+ARG USER=steam
+ARG GROUP=steam
+ARG PUID=995
+ARG PGID=995
+
 RUN apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -q -y --no-install-recommends \
       netcat qstat && \
@@ -11,7 +16,6 @@ ENV STEAMCMD_APP_ID="294420" \
 
 ADD 7dtd-* /usr/local/bin/
 RUN chmod +x /usr/local/bin/7dtd-*
-RUN chown -R 995:995 /data
 
 HEALTHCHECK CMD [ "7dtd-status" ]
 
